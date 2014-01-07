@@ -958,7 +958,7 @@ var commands = exports.commands = {
                 this.sendReplyBox('<center><b>The Bar - mac\s Room</b></center><br />' +
                                   '<a href="http://thebar-shop.webs.com/">Website</a><br />' +
                                   '<a href="http://thebar-shop.webs.com/shop-beta">Shop (beta)</a><br />' +
-                                  '<center><b><font size=3>Owner:</b> @<b>macrarazy</b>');
+                                  '<b><font size=3>Owner:</b> @<b>macrarazy</b>');
         },
 	
 	birkal: function(target, room, user) {
