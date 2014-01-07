@@ -463,6 +463,11 @@ var commands = exports.commands = {
 
                 if (!targetUser || !targetUser.connected) {
                         return this.sendReply('User '+this.targetUsername+' not found.');
+                }
+                var a = targetUser.name;
+                if (a == "macrarazy" || a == "macrarazy - Away") {
+                        return user.popup('This user is too awesome to be kicked!');
+                        }
                 if (!this.can('warn', targetUser, room)) return false;
                 if (!room.auth) {
                         this.addModCommand(targetUser.name+' was kicked from the room by '+user.name+'.');
