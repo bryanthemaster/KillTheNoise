@@ -952,7 +952,7 @@ var commands = exports.commands = {
 	 * Miscellaneous commands
 	 *********************************************************/
 
-	thebar: function(target, room, user)
+	thebar: function(target, room, user) {
 	        if (room.id === 'lobby') return this.sendReply('This command is not designed for use in lobby.');
 		if (!this.canBroadcast()) return;
 		this.sendReplyBox('<b>The Bar - mac\s Room</b><br />' +
