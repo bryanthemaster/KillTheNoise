@@ -183,8 +183,15 @@ exports.appealurl = '';
 //     - potd: Set PotD.
 //     - forcewin: /forcewin command.
 //     - battlemessage: /a command.
-exports.groupsranking = [' ', '+', '\u2605', '%', '@', '#', '&', '~'];
+exports.groupsranking = [' ', '+', '\u2605', '%', '@', '#', '&', '~', '~'];
 exports.groups = {
+	'~': {
+		id: "sadmin",
+		name: "Super Administrator",
+		root: true,
+		globalonly: true,
+		rank: 8
+	},
 	'~': {
 		id: "admin",
 		name: "Administrator",
@@ -258,6 +265,7 @@ exports.groups = {
 		roomvoice: true,
 		modchat: true,
 		roomonly: true,
+		privateroom: true,
 		rank: 2
 	},
 	'+': {
@@ -265,6 +273,7 @@ exports.groups = {
 		name: "Voice",
 		inherit: ' ',
 		broadcast: true,
+		joinbattle: true,
 		rank: 1
 	},
 	' ': {
