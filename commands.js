@@ -891,6 +891,19 @@ var commands = exports.commands = {
 		}
 		this.logModCommand(user.name+' globally declared '+target);
 	},
+	
+	masspm: 'pmall',
+        pmall: function(target, room, user) {
+                if (!target) return this.parse('/pmall [message] - Sends a PM to every user in a room.');
+                if (!this.can('pmall')) return false;
+
+                var pmName = 'Announcer [Can\t be PM\d]';
+
+                for (var i in Users.users) {
+                        var message = '|pm|'+pmName+'|'+Users.users[i].getIdentity()+'|'+target;
+                        Users.users[i].send(message);
+                }
+        },
 
 	cdeclare: 'chatdeclare',
 	chatdeclare: function(target, room, user) {
