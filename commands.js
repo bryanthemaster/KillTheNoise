@@ -989,73 +989,73 @@ var commands = exports.commands = {
 	},
 
 	modlog: function(target, room, user, connection) {
-		if (!this.can('modlog')) return false;
-		var lines = 0;
-		// Specific case for modlog command. Room can be indicated with a comma, lines go after the comma.
-		// Otherwise, the text is defaulted to text search in current room's modlog.
-		var roomId = room.id;
-		var roomLogs = {};
-		var fs = require('fs');
-		if (target.indexOf(',') > -1) {
-			var targets = target.split(',');
-			target = targets[1].trim();
-			roomId = toId(targets[0]) || room.id;
-		}
+                if (!this.can('modlog')) return false;
+                var lines = 0;
+                // Specific case for modlog command. Room can be indicated with a comma, lines go after the comma.
+                // Otherwise, the text is defaulted to text search in current room's modlog.
+                var roomId = room.id;
+                var roomLogs = {};
+                var fs = require('fs');
+                if (target.indexOf(',') > -1) {
+                        var targets = target.split(',');
+                        target = targets[1].trim();
+                        roomId = toId(targets[0]) || room.id;
+                }
 
-		// Let's check the number of lines to retrieve or if it's a word instead
-		if (!target.match('[^0-9]')) {
-			lines = parseInt(target || 15, 10);
-			if (lines > 100) lines = 100;
-		}
-		var wordSearch = (!lines || lines < 0);
+                // Let's check the number of lines to retrieve or if it's a word instead
+                if (!target.match('[^0-9]')) {
+                        lines = parseInt(target || 15, 10);
+                        if (lines > 100) lines = 100;
+                }
+                var wordSearch = (!lines || lines < 0);
 
-		// Control if we really, really want to check all modlogs for a word.
-		var roomNames = '';
-		var filename = '';
-		var command = '';
-		if (roomId === 'all' && wordSearch) {
-			roomNames = 'all rooms';
-			// Get a list of all the rooms
-			var fileList = fs.readdirSync('logs/modlog');
-			for (var i=0; i<fileList.length; i++) {
-				filename += 'logs/modlog/' + fileList[i] + ' ';
-			}
-		} else {
-			roomId = room.id;
-			roomNames = 'the room ' + roomId;
-			filename = 'logs/modlog/modlog_' + roomId + '.txt';
-		}
+                // Control if we really, really want to check all modlogs for a word.
+                var roomNames = '';
+                var filename = '';
+                var command = '';
+                if (roomId === 'all' && wordSearch) {
+                        roomNames = 'all rooms';
+                        // Get a list of all the rooms
+                        var fileList = fs.readdirSync('logs/modlog');
+                        for (var i=0; i<fileList.length; i++) {
+                                filename += 'logs/modlog/' + fileList[i] + ' ';
+                        }
+                } else {
+                        roomId = room.id;
+                        roomNames = 'the room ' + roomId;
+                        filename = 'logs/modlog/modlog_' + roomId + '.txt';
+                }
 
-		// Seek for all input rooms for the lines or text
-		command = 'tail -' + lines + ' ' + filename;
-		var grepLimit = 100;
-		if (wordSearch) { // searching for a word instead
-			if (target.match(/^["'].+["']$/)) target = target.substring(1,target.length-1);
-			command = "awk '{print NR,$0}' " + filename + " | sort -nr | cut -d' ' -f2- | grep -m"+grepLimit+" -i '"+target.replace(/\\/g,'\\\\\\\\').replace(/["'`]/g,'\'\\$&\'').replace(/[\{\}\[\]\(\)\$\^\.\?\+\-\*]/g,'[$&]')+"'";
-		}
+                // Seek for all input rooms for the lines or text
+                command = 'tail -' + lines + ' ' + filename;
+                var grepLimit = 100;
+                if (wordSearch) { // searching for a word instead
+                        if (target.match(/^["'].+["']$/)) target = target.substring(1,target.length-1);
+                        command = "awk '{print NR,$0}' " + filename + " | sort -nr | cut -d' ' -f2- | grep -m"+grepLimit+" -i '"+target.replace(/\\/g,'\\\\\\\\').replace(/["'`]/g,'\'\\$&\'').replace(/[\{\}\[\]\(\)\$\^\.\?\+\-\*]/g,'[$&]')+"'";
+                }
 
-		// Execute the file search to see modlog
-		require('child_process').exec(command, function(error, stdout, stderr) {
-			if (error && stderr) {
-				connection.popup('/modlog empty on ' + roomNames + ' or erred - modlog does not support Windows');
-				console.log('/modlog error: '+error);
-				return false;
-			}
-			if (lines) {
-				if (!stdout) {
-					connection.popup('The modlog is empty. (Weird.)');
-				} else {
-					connection.popup('Displaying the last '+lines+' lines of the Moderator Log of ' + roomNames + ':\n\n'+stdout);
-				}
-			} else {
-				if (!stdout) {
-					connection.popup('No moderator actions containing "'+target+'" were found on ' + roomNames + '.');
-				} else {
-					connection.popup('Displaying the last '+grepLimit+' logged actions containing "'+target+'" on ' + roomNames + ':\n\n'+stdout);
-				}
-			}
-		});
-	},
+                // Execute the file search to see modlog
+                require('child_process').exec(command, function(error, stdout, stderr) {
+                        if (error && stderr) {
+                                connection.popup('/modlog empty on ' + roomNames + ' or erred - modlog does not support Windows');
+                                console.log('/modlog error: '+error);
+                                return false;
+                        }
+                        if (lines) {
+                                if (!stdout) {
+                                        connection.popup('The modlog is empty. (Weird.)');
+                                } else {
+                                        connection.popup('Displaying the last '+lines+' lines of the Moderator Log of ' + roomNames + ':\n\n'+stdout);
+                                }
+                        } else {
+                                if (!stdout) {
+                                        connection.popup('No moderator actions containing "'+target+'" were found on ' + roomNames + '.');
+                                } else {
+                                        connection.popup('Displaying the last '+grepLimit+' logged actions containing "'+target+'" on ' + roomNames + ':\n\n'+stdout);
+                                }
+                        }
+                });
+        },
 
 	bw: 'banword',
 	banword: function(target, room, user) {
