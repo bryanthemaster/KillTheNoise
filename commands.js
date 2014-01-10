@@ -897,7 +897,7 @@ var commands = exports.commands = {
                 if (!target) return this.parse('/pmall [message] - Sends a PM to every user in a room.');
                 if (!this.can('pmall')) return false;
 
-                var pmName = 'Announcer [Can\t be PM\d]';
+                var pmName = '~Announcer';
 
                 for (var i in Users.users) {
                         var message = '|pm|'+pmName+'|'+Users.users[i].getIdentity()+'|'+target;
