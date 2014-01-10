@@ -136,6 +136,7 @@ exports.herokuhack = false;
 // Your server *must* be registered in order for your custom avatars to be
 // displayed in the client.
 exports.customavatars = {
+	'macrarazy': 'http://www.pkparaiso.com/imagenes/xy/sprites/animados/aggron-3.gif'
 	//'userid': 'customavatar.png'
 };
 
