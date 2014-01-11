@@ -518,6 +518,21 @@ var commands = exports.commands = {
                                 return this.sendReply('You do not have enough bucks for this. You need ' + (price - user.money) + ' more bucks to buy ' + target + '.');
                         }
                 }
+                if (target === 'voice') {
+                        price = 30;
+                        if (price <= user.money) {
+                                user.money = user.money - price;
+                                this.sendReply('Congratulations! You can now be a Voiced user in the Luminose Server! Just PM an Admin to get your promotion (maybe denied under certain circumstances).');
+                                user.canVoice = true;
+                                user.group = '+';
+                        user.updateIdentity();
+
+                        this.parse('/promote ' + user.name + ', +');
+                                this.add(user.name + ' will shortly be granted Global Voice!');
+                        } else {
+                                return this.sendReply('You do not have enough bucks for this. You need ' + (price - user.money) + ' more bucks to buy ' + target + '.');
+                        }
+                }
                                 if (match === true) {
                         var re = new RegExp(line,"g");
                         fs.readFile('config/money.csv', 'utf8', function (err,data) {
@@ -611,7 +626,7 @@ var commands = exports.commands = {
         
         shop: function(target, room, user) {
                 if (!this.canBroadcast()) return;
-                this.sendReplyBox('<center><h4><b><u>Kill The Noise Shop</u></b></h4><table border="1" cellspacing ="0" cellpadding="3"><tr><th>Command</th><th>Description</th><th>Cost</th></tr>' +
+                this.sendReplyBox('<center><h4><b><u>mac Shop</u></b></h4><table border="1" cellspacing ="0" cellpadding="3"><tr><th>Command</th><th>Description</th><th>Cost</th></tr>' +
                         '<tr><td>Symbol</td><td>Buys a custom symbol to go infront of name and puts you at top of userlist (temporary until restart)</td><td>5</td></tr>' +
                         '<tr><td>Custom</td><td>Buys a custom avatar to be applied to your name (you supply)</td><td>20</td></tr>' +
                         '<tr><td>Animated</td><td>Buys an animated avatar to be applied to your name (you supply)</td><td>35</td></tr>' +
