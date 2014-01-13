@@ -184,16 +184,16 @@ exports.appealurl = '';
 //     - potd: Set PotD.
 //     - forcewin: /forcewin command.
 //     - battlemessage: /a command.
-exports.groupsranking = [' ', '+', '\u2605', '%', '@', '#', '&', '~', '~'];
+exports.groupsranking = [' ', '+', '\u2605', '%', '@', '#', '&', '~', '-'];
 exports.groups = {
-	'~': {
-		id: "sadmin",
+	'-': {
+		id: "superadmin",
 		name: "Super Administrator",
 		root: true,
 		globalonly: true,
+		gdeclare: true,
 		rank: 8
-	},
-	'~': {
+	},'~': {
 		id: "admin",
 		name: "Administrator",
 		root: true,
