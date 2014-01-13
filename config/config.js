@@ -226,6 +226,7 @@ exports.groups = {
 		declare: true,
 		modchatall: true,
 		roomonly: true,
+		pmall: true,
 		rank: 5
 	},
 	'@': {
