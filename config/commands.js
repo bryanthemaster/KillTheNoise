@@ -631,6 +631,17 @@ var commands = exports.commands = {
 			'~ <b>Administrator</b> - They can do anything, like change what this message says<br />' +
 			'# <b>Room Owner</b> - They are administrators of the room and can almost totally control it');
 	},
+	
+	macrarazy: 'mac',
+        e4mac: 'mac',
+        e6mac: 'mac',
+        mac: function(target, room, user) {
+                if(!this.canBroadcast()) return;
+                this.sendReplyBox('<center><img src="http://media-cerulean.cursecdn.com/attachments/thumbnails/5/622/530/530/mega_lucario.png" height="180" width="150"><br />' +
+                                  '<img src="http://th03.deviantart.net/fs70/PRE/i/2014/003/8/1/mega_aggron_by_theangryaron-d70p759.png" height="130" width="150"> <img src="http://i.imgur.com/91GZs2L.gif"> <img src="http://fc06.deviantart.net/fs70/f/2013/285/4/7/mega_aggron_tramplin__the_lawn_by_brandon_stuart-d6q5051.png" height="130" width="160"><br />' +
+                                  '<b><blink>Ace: Mega Aggron</blink><br />' + 
+                                  '<font color=gray>Sometimes... Steel is too much for you!</font></b>')
+        },
 
 	opensource: function(target, room, user) {
 		if (!this.canBroadcast()) return;
