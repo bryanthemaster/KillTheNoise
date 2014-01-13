@@ -913,7 +913,7 @@ var commands = exports.commands = {
 	masspm: 'pmall',
         pmall: function(target, room, user) {
                 if (!target) return this.parse('/pmall [message] - Sends a PM to every user in a room.');
-                if (!this.can('pmall')) return false;
+                if (!this.can('pmall', null, room)) return false;
 
                 var pmName = '~Announcer';
 
