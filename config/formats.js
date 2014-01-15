@@ -43,6 +43,16 @@ exports.Formats = [
 		ruleset: ['Pokemon', 'Standard', 'Team Preview'],
 		banlist: ['Uber', 'Soul Dew', 'Gengarite', 'Kangaskhanite', 'OU', 'BL', 'Drizzle']
 	},
+
+// This is a test mod for Infinite Server
+
+        {
+		name: "PU (beta)",
+		section: "XY Singles",
+		
+		ruleset: ['Pokemon', 'Standard', 'Team Preview'],
+		banlist: ['Illegal', 'Unreleased', 'Bright Powder', 'Focus Band', 'King\'s Rock', 'Lax Incense', 'Quick Claw', 'Quick Powder', 'Razor Claw', 'Razor Fang', 'Attract', 'Confuse Ray', 'Flatter', 'Supersonic', 'Swagger', 'Sweet Kiss', 'Teeter Dance']
+	},
 	{
 		name: "LC",
 		section: "XY Singles",
