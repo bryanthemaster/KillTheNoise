@@ -1,5 +1,5 @@
 // Note: This is the list of formats
-// The rules that formats use are stored in data/formats.js
+// The rules that formats use are stored in data/rulesets.js
 
 exports.Formats = [
 
@@ -37,22 +37,34 @@ exports.Formats = [
 		banlist: []
 	},
 	{
+                name: "DDT (beta)",
+                section: "XY Singles",
+                
+                ruleset: ['Pokemon', 'Standard', 'Team Preview'],
+                banlist: ['Uber', 'OU', 'BL', 'Illegal', 'Unreleased', 'Drought', 'Drizzle', 'Sand Stream', 'Snow Warning', 'Bright Powder', 'Focus Band', 'Focus Sash', 'King\'s Rock', 'Lax Incense', 'Quick Claw', 'Razor Claw', 'Razor Fang', 'Assist', 'Attract', 'Confuse Ray', 'Flatter', 'Sticky Web', 'Supersonic', 'Swagger', 'Sweet Kiss', 'Teeter Dance', 'Chansey',
+                          'Doublade',
+                          'Dusclops',
+                          'Gligar',
+                          'Jynx',
+                          'Musharna',
+                          'Porygon2',
+                          'Sawk',
+                          'Scyther']
+        },
+	{
 		name: "UU (beta)",
 		section: "XY Singles",
 
 		ruleset: ['Pokemon', 'Standard', 'Team Preview'],
-		banlist: ['Uber', 'Soul Dew', 'Gengarite', 'Kangaskhanite', 'OU', 'BL', 'Drizzle']
+		banlist: ['Uber', 'Soul Dew', 'Gengarite', 'Kangaskhanite', 'Heracronite', 'OU', 'BL', 'Drizzle', 'Drought']
 	},
-
-// This is a test mod for Infinite Server
-
-        {
-		name: "PU (beta)",
-		section: "XY Singles",
-		
-		ruleset: ['Pokemon', 'Standard', 'Team Preview'],
-		banlist: ['Illegal', 'Unreleased', 'Bright Powder', 'Focus Band', 'King\'s Rock', 'Lax Incense', 'Quick Claw', 'Quick Powder', 'Razor Claw', 'Razor Fang', 'Attract', 'Confuse Ray', 'Flatter', 'Supersonic', 'Swagger', 'Sweet Kiss', 'Teeter Dance']
-	},
+	{
+                name: "PU",
+                section: "XY Singles",
+                
+                ruleset: ['Pokemon', 'Standard', 'Team Preview'],
+                banlist: ['Uber', 'OU', 'BL', 'UU', 'Illegal', 'Unreleased', 'Drought', 'Drizzle', 'Sand Stream', 'Snow Warning', 'Bright Powder', 'Focus Band', 'King\'s Rock', 'Lax Incense', 'Quick Claw', 'Quick Powder', 'Razor Claw', 'Razor Fang', 'Attract', 'Confuse Ray', 'Flatter', 'Supersonic', 'Swagger', 'Sweet Kiss', 'Teeter Dance']
+        },
 	{
 		name: "LC",
 		section: "XY Singles",
@@ -325,7 +337,7 @@ exports.Formats = [
 		debug: true,
 		ruleset: ['Team Preview']
 	},
-	
+
 	// Other Metagames
 	///////////////////////////////////////////////////////////////////
 
@@ -383,14 +395,14 @@ exports.Formats = [
 		name: "Balanced Hackmons",
 		section: "Other Metagames",
 
-		ruleset: ['Pokemon', 'OHKO Clause'],
+		ruleset: ['Pokemon', 'OHKO Clause', 'HP Percentage Mod'],
 		banlist: ['Wonder Guard', 'Shadow Tag', 'Arena Trap', 'Pure Power', 'Huge Power', 'Parental Bond']
 	},
 	{
 		name: "Hackmons",
 		section: "Other Metagames",
 
-		ruleset: ['Pokemon'],
+		ruleset: ['Pokemon', 'HP Percentage Mod'],
 		banlist: []
 	},
 	{
@@ -461,10 +473,10 @@ exports.Formats = [
 			this.p2.pokemonLeft = this.p2.pokemon.length;
 		},
 		ruleset: ['Pokemon', 'Standard'],
-		banlist: ['Unreleased', 'Illegal', 'Focus Sash', 'Soul Dew',
+		banlist: ['Unreleased', 'Illegal', 'Focus Sash', 'Kangaskhanite', 'Soul Dew',
 			'Destiny Bond', 'Explosion', 'Final Gambit', 'Healing Wish', 'Lunar Dance', 'Memento', 'Perish Song', 'Selfdestruct',
 			'Arceus', 'Arceus-Bug', 'Arceus-Dark', 'Arceus-Dragon', 'Arceus-Electric', 'Arceus-Fairy', 'Arceus-Fighting', 'Arceus-Fire', 'Arceus-Flying', 'Arceus-Ghost', 'Arceus-Grass', 'Arceus-Ground', 'Arceus-Ice', 'Arceus-Poison', 'Arceus-Psychic', 'Arceus-Rock', 'Arceus-Steel', 'Arceus-Water',
-			'Blaziken', 'Blaziken-Mega', 'Darkrai', 'Deoxys', 'Deoxys-Attack', 'Dialga', 'Giratina', 'Giratina-Origin', 'Groudon', 'Ho-Oh', 'Kyogre', 'Kyurem-White', 'Lugia', 'Mewtwo', 'Mewtwo-Mega-X', 'Mewtwo-Mega-Y', 'Palkia', 'Rayquaza', 'Reshiram', 'Shaymin-Sky', 'Xerneas', 'Yveltal', 'Zekrom'
+			'Blaziken', 'Darkrai', 'Deoxys', 'Deoxys-Attack', 'Dialga', 'Giratina', 'Giratina-Origin', 'Groudon', 'Ho-Oh', 'Kyogre', 'Kyurem-White', 'Lugia', 'Mewtwo', 'Palkia', 'Rayquaza', 'Reshiram', 'Shaymin-Sky', 'Xerneas', 'Yveltal', 'Zekrom'
 		]
 	},
 	{
@@ -672,7 +684,7 @@ exports.Formats = [
 		mod: 'gen4',
 		ruleset: ['Pokemon', 'Standard'],
 		banlist: ['Uber'],
-		
+
 		column: 2
 	},
 	{
