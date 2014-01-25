@@ -136,7 +136,6 @@ exports.herokuhack = false;
 // Your server *must* be registered in order for your custom avatars to be
 // displayed in the client.
 exports.customavatars = {
-	'macrarazy': 'customavatar.gif'
 	//'userid': 'customavatar.png'
 };
 
@@ -184,16 +183,9 @@ exports.appealurl = '';
 //     - potd: Set PotD.
 //     - forcewin: /forcewin command.
 //     - battlemessage: /a command.
-exports.groupsranking = [' ', '+', '\u2605', '%', '@', '#', '&', '~', '-'];
+exports.groupsranking = [' ', '+', '\u2605', '%', '@', '#', '&', '~'];
 exports.groups = {
-	'-': {
-		id: "superadmin",
-		name: "Super Administrator",
-		root: true,
-		globalonly: true,
-		gdeclare: true,
-		rank: 8
-	},'~': {
+	'~': {
 		id: "admin",
 		name: "Administrator",
 		root: true,
