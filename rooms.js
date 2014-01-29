@@ -1399,7 +1399,6 @@ var ChatRoom = (function() {
 			Tournaments.get(this.id).update(user);
 		if (this.reminders && this.reminders.length > 0)
 			CommandParser.parse('/reminder', this, user, connection);
-		CommandParser.parse('/donate', this, user, connection);
 	};
 	ChatRoom.prototype.onJoin = function(user, connection, merging) {
 		if (!user) return false; // ???
@@ -1427,7 +1426,6 @@ var ChatRoom = (function() {
 				Tournaments.get(this.id).update(user);
 			if (this.reminders && this.reminders.length > 0)
 				CommandParser.parse('/reminder', this, user, connection);
-			CommandParser.parse('/donate', this, user, connection);
 		}
 
 		return user;

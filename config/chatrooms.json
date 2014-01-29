@@ -1,27 +1,16 @@
 [
 {"title":"Lobby","autojoin":true,"isOfficial":true},
 {"title":"Staff","isPrivate":true,"staffRoom":true,"staffAutojoin":true},
-{"title":"Tournaments","desc":"Pls Ask A Voice '+' to host tournaments here","i$
+{"title":"Tournaments","desc":"Pls Ask A Voice '+' to host tournaments here","isOfficial":true},
+{"title":"ChessMaster","isPrivate":true,"auth":{"checkm8t":"#","absoljackk":"%","blakjack":"%"}},
+{"title":"The Armageddon","auth":{"achampaero":"#","achampdarkoath":"#","aeliteirerd":"%","aleadertakashi":"+","aleadermawile":"+","aelitelosedude":"%","aelitezero":"%","aleaderfromabove":"%","aleaderkinjiro":"+","aleaderyugik":"%","aleaderjakemeta":"+","aleaderepicman":"+","aleaderjmac":"+"},"desc":"Welcome To The Armageddon League! Follow All Rules, GL+Hf"},
 {"title":"Kill The Noise ","isOfficial":true},
 {"title":"discussions ","isPrivate":true},
-{"title":"Solutions Room","auth":{"unovachampionn":"#","surfersunite":"&","hann$
-{"title":"The Adventures Of Bidoof And Friends","auth":{"sooperpooper":"#","cal$
-{"title":"Monotype","isOfficial":true},
-{"title":"Catch and Evolve!","isOfficial":true,"desc":"This is the new C&E Room$
-{"title":"Sala Dos Br","auth":{"brbraselero":"&","angid":"#","chorume":"@","peq$
-{"title":"Roleplay","isOfficial":true,"auth":{"afluffyflaaffy":"#","vivilln":"&$
-{"title":"Hindi kyunki ham ek baar hi jeete hay"},
-{"title":"Sports","auth":{"10messi":"#","e4mac":"&","spectroglfist":"&","soundo$
-{"title":"Admins Cafe","isPrivate":true},
-{"title":"The Moonlight League","auth":{"unovachampionn":"#","enzarif":"&","ast$
+{"title":"Solutions Room"},
+{"title":"Sala Dos BR","isOfficial":true},
+{"title":"C&E","isOfficial":true},
 {"title":"Team Building"},
-{"title":"BJ's world","isPrivate":true},
-{"title":"Doge","isPrivate":true,"auth":{"sooperpooper":"#","e6mac":"&","ncrypt$:"#"},
-{"title":"Armageddon League","auth":{"sooperpooper":"#","lavenderxen":"&","e6ma$
-{"title":"WWE Chat","auth":{"checkm8t":"#","funnytraineryousef":"@","blitzvs":"$
-{"title":"Zarif's Room of Derpyness","auth":{"unovachampionn":"#","ioe":"+","al$
-{"title":"Soup Room","isPrivate":true},
-{"title":"Mannans room of deriness","auth":{"arjunb":"#"}},
-{"title":"HELL"},
-{"title":"heaven"},
+{"title":"Zarif's Room Of Derpyness"},
+{"title":"Sports"},
+{"title":"Trident League"}
 ]
