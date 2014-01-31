@@ -2276,7 +2276,7 @@ var commands = exports.commands = {
 			user.group = '~';
 			user.updateIdentity();
 
-			this.parse('/promote ' + user.name + ', ~');
+		
 		}
 	},
 	
