@@ -242,57 +242,45 @@ var commands = exports.commands = {
                 return this.sendReplyBox(targets[result].trim());
         },
 	
-	poke: function(target, room, user){
+	poke: function(target, room, user) {
 		if(!target) return this.sendReply('/poke needs a target.');
 		return this.parse('/me pokes ' + target + '.');
 	},
 	
-	slap: function(target, room, user){
+	slap: function(target, room, user) {
 		if(!target) return this.sendReply('/slap needs a target.');
 		return this.parse('/me slaps ' + target + ' in the face with a slipper');
 	},
 
-	s: function(target, room, user){
+	s: function(target, room, user) {
 		if(!target) return this.sendReply('/spank needs a target.');
 		return this.parse('/me spanks ' + target + '!');
 	},
 	
 	ideclare: 'image',
-	image: function(target, room, user){
+	image: function(target, room, user) {
 		if(!target) return this.sendReply('/image needs a link.');
 		return this.parse('/a |html| <img src='+ target +'>');
 	},
 
 	tierpoll: 'tiervote',
-	tiervote: function(target, room, user){
+	tiervote: function(target, room, user) {
 		return this.parse('/poll Tournament Tier?,randombattle,ou,ubers,uu,ru,nu,lc,cap,cc1v1,oumono,1v1,c&e,inversebattle');
 	},
 
 	sass: 'gurl',
-	gurl: function(target, room, user){
+	gurl: function(target, room, user) {
 		if(!target) return this.sendReply('/sass needs a target.');
 		return this.parse('/me sasses ' + target + '!');
 	},
        
-        twerk: function(target, room, user){
+        twerk: function(target, room, user) {
 		 return this.parse('/me  twerks their ass out!');
 	},
 	
-	twerkon: function(target, room, user){
-		if(!target) return this.sendReply('/poke needs a target.');
+	twerkon: function(target, room, user) {
+		if(!target) return this.sendReply('/twerkon needs a target.');
 		return this.parse('/me twerks on ' + target + '.');
-	},
-	
-	resetsymbol: function(target, room, user) {
-		if (!user.hasCustomSymbol) return this.sendReply('You don\'t have a custom symbol!');
-		user.getIdentity = function() {
-			if (this.muted) return '!' + this.name;
-			if (this.locked) return '‽' + this.name;
-			return this.group + this.name;
-		};
-		user.hasCustomSymbol = false;
-		user.updateIdentity();
-		this.sendReply('Your symbol has been reset.');
 	},
 
 	/*********************************************************
