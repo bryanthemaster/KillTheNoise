@@ -228,6 +228,20 @@ var commands = exports.commands = {
 		return this.parse('/msg ' + this.targetUsername + ', /invite ' + roomid);
 	},
 	
+	getrandom: 'pickrandom',
+        pickrandom: function (target, room, user) {
+                if (!target) return this.sendReply('/pickrandom [option 1], [option 2], ... - Randomly chooses one of the given options.');
+                if (!this.canBroadcast()) return;
+                var targets;
+                if (target.indexOf(',') === -1) {
+                        targets = target.split(' ');
+                } else {
+                        targets = target.split(',');
+                };
+                var result = Math.floor(Math.random() * targets.length);
+                return this.sendReplyBox(targets[result].trim());
+        },
+	
 	slap: function(target, room, user){
 		if(!target) return this.sendReply('/poke needs a target.');
 		return this.parse('/me slaps ' + target + ' in the face with a slipper');
