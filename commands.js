@@ -352,7 +352,7 @@ var commands = exports.commands = {
 		}
 	},
 	
-	transferbucks: function(target, room, user) {
+	/*transferbucks: function(target, room, user) {
 		if(!target) return this.parse('...');
 		if (target.indexOf(',') != -1) {
 			var parts = target.split(',');
@@ -416,7 +416,7 @@ var commands = exports.commands = {
 		} else {
 			return this.parse('/help givebucks');
 		}
-	},
+	},*/
 
 	takebucks: 'removebucks',
 	removebucks: function(target, room, user) {
