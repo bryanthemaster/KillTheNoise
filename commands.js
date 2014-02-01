@@ -351,6 +351,72 @@ var commands = exports.commands = {
 			return this.parse('/help givebucks');
 		}
 	},
+	
+	transferbucks: function(target, room, user) {
+		if(!target) return this.parse('...');
+		if (target.indexOf(',') != -1) {
+			var parts = target.split(',');
+			parts[0] = this.splitTarget(parts[0]);
+			var targetUser = this.targetUser;
+		if (!targetUser) {
+			return this.sendReply('User '+this.targetUsername+' not found.');
+		}
+		if (isNaN(parts[1])) {
+			return this.sendReply('Very funny, now use a real number.');
+		}
+		var cleanedUp = parts[1].trim();
+		var giveMoney = Number(cleanedUp);
+		var data = fs.readFileSync('config/money.csv','utf8')
+		var match = false;
+		var money = 0;
+		var line = '';
+		var row = (''+data).split("\n");
+		for (var i = row.length; i > -1; i--) {
+			if (!row[i]) continue;
+			var parts = row[i].split(",");
+			var userid = toUserid(parts[0]);
+			if (targetUser.userid == userid) {
+			var x = Number(parts[1]);
+			var money = x;
+			match = true;
+			if (match === true) {
+				line = line + row[i];
+				break;
+			}
+			}
+		}
+		targetUser.money = money;
+		targetUser.money += giveMoney;
+		user.money = money;
+		user.money -= giveMoney;
+		if (user.money < giveMoney) { return this.sendReply('You don\'t have enough money to give'); }
+		if (match === true) {
+			var re = new RegExp(line,"g");
+			fs.readFile('config/money.csv', 'utf8', function (err,data) {
+			if (err) {
+				return console.log(err);
+			}
+			var result = data.replace(re, targetUser.userid+','+targetUser.money);
+			var userresult = data.replace(re, user.userid+','+user.money);
+			fs.writeFile('config/money.csv', result, 'utf8', function (err) {
+				if (err) return console.log(err);
+			});
+				fs.writeFile('config/money.csv', userresult, 'utf8', function (err) {
+				if (err) return console.log(err);
+			});
+			});
+		} else {
+			var log = fs.createWriteStream('config/money.csv', {'flags': 'a'});
+			log.write("\n"+targetUser.userid+','+targetUser.money);
+		}
+		var p = 'bucks';
+		if (giveMoney < 2) p = 'buck';
+		this.sendReply(targetUser.name + ' was given ' + giveMoney + ' ' + p + '. This user now has ' + targetUser.money + ' bucks.');
+		targetUser.send(user.name + ' has given you ' + giveMoney + ' ' + p + '.');
+		} else {
+			return this.parse('/help givebucks');
+		}
+	},
 
 	takebucks: 'removebucks',
 	removebucks: function(target, room, user) {
