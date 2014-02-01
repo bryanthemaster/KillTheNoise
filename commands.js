@@ -653,7 +653,7 @@ var commands = exports.commands = {
 
 	},
 	
-	buyweapon: function(target, room, user) {
+	/*buyweapon: function(target, room, user) {
 		if (!target) return this.parse('That isn\'t a weapon');
 		if (!users.get('Siiilver')) return this.sendReply('Silver the blacksmith isn\'t online....');
 		var data = fs.readFileSync('config/money.csv','utf8')
@@ -759,7 +759,7 @@ var commands = exports.commands = {
 					var log = fs.createWriteStream('config/money.csv', {'flags': 'a'});
 					log.write("\n"+user.userid+','+user.money);
 				}
-	},
+	},*/
 
 	customsymbol: function(target, room, user) {
 		if(!user.canCustomSymbol) return this.sendReply('You need to buy this item from the shop to use.');
