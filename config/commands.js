@@ -886,6 +886,19 @@ var commands = exports.commands = {
 		}, ""));
 	},
 	
+	tourhelp: 'tourcommands',
+	tourcommand: 'tourcommands',
+	tourcommands: function(target, room, user) {
+        if (!this.canBroadcast()) return;
+        this.sendReplyBox('Tournaments through /tour can be started by Voice (+) users and higher:<br \>' +
+        '/tour [tier], [size] - Starts a tournament<br \>' +
+		'/endtour - Ends a currently running tournament<br \>' +
+		'/fj [username] - Force someone to join a tournament<br \>' +
+		'/fl [username] - Force someone to leave a tournament<br \>' +
+		'/toursize [size] - Changes the size of a currently running tournament<br \>' +
+		'/replace [username], [username] - Replaces user in a tournament with the second user');
+        },
+	
 	/***************************************
 	* Trainer Cards                        *
 	***************************************/
