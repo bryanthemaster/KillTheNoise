@@ -652,6 +652,114 @@ var commands = exports.commands = {
 				
 
 	},
+	
+	buyweapon: function(target, room, user) {
+		if (!target) return this.parse('That isn\'t a weapon);
+		if (!users.get('Siiilver')) return this.sendReply('Silver the blacksmith isn\'t online....');
+		var data = fs.readFileSync('config/money.csv','utf8')
+		var match = false;
+		var money = 0;
+		var line = '';
+		var row = (''+data).split("\n");
+		for (var i = row.length; i > -1; i--) {
+			if (!row[i]) continue;
+			var parts = row[i].split(",");
+			var userid = toUserid(parts[0]);
+			if (user.userid == userid) {
+			var x = Number(parts[1]);
+			var money = x;
+			match = true;
+			if (match === true) {
+				line = line + row[i];
+				break;
+			}
+			}
+		}
+		user.money = money;
+		var price = 0;
+		
+		if (target === 'banhammer') {
+			price = 20;
+			if (price <= user.money) {
+				user.money = user.money - price;
+				this.sendReply('You have purchased a banhammer.');
+				user.canCustomAvatar = true;
+				this.add(user.name + ' has purchased a brahammer from the blacksmith shop!');
+			} else {
+				return this.sendReply('You do not have enough bucks for this. You need ' + (price - user.money) + ' more bucks to buy ' + target + '.');
+			}
+		}
+		if (target === 'animated') {
+			price = 35;
+			if (price <= user.money) {
+				user.money = user.money - price;
+				this.sendReply('You have purchased a custom animated avatar. You need to message an Admin capable of adding (BlakJack or Skarr).');
+				user.canAnimatedAvatar = true;
+				this.add(user.name + ' has purchased a custom animated avatar!');
+			} else {
+				return this.sendReply('You do not have enough bucks for this. You need ' + (price - user.money) + ' more bucks to buy ' + target + '.');
+			}
+		}
+		if (target === 'room') {
+			price = 100;
+			if (price <= user.money) {
+				user.money = user.money - price;
+				this.sendReply('You have purchased a chat room. You need to message an Admin so that the room can be made.');
+				user.canChatRoom = true;
+				this.add(user.name + ' has purchased a chat room!');
+			} else {
+				return this.sendReply('You do not have enough bucks for this. You need ' + (price - user.money) + ' more bucks to buy ' + target + '.');
+			}
+		}
+		if (target === 'trainer') {
+			price = 30;
+			if (price <= user.money) {
+				user.money = user.money - price;
+				this.sendReply('You have purchased a trainer card. You need to message an Admin capable of adding this (BlakJack or Skarr).');
+				user.canTrainerCard = true;
+				this.add(user.name + ' has purchased a trainer card!');
+			} else {
+				return this.sendReply('You do not have enough bucks for this. You need ' + (price - user.money) + ' more bucks to buy ' + target + '.');
+			}
+		}
+		if (target === 'fix') {
+			price = 10;
+			if (price <= user.money) {
+				user.money = user.money - price;
+				this.sendReply('You have purchased the ability to alter your avatar or trainer card. You need to message an Admin capable of adding this (BlakJack or Skarr).');
+				user.canFixItem = true;
+				this.add(user.name + ' has purchased the ability to set alter their card or avatar!');
+			} else {
+				return this.sendReply('You do not have enough bucks for this. You need ' + (price - user.money) + ' more bucks to buy ' + target + '.');
+			}
+		}
+		if (target === 'declare') {
+			price = 25;
+			if (price <= user.money) {
+				user.money = user.money - price;
+				this.sendReply('You have purchased the ability to declare (from Admin). To do this message an Admin (~) with the message you want to send. Keep it sensible!');
+				user.canDecAdvertise = true;
+				this.add(user.name + ' has purchased the ability to declare from an Admin!');
+			} else {
+				return this.sendReply('You do not have enough bucks for this. You need ' + (price - user.money) + ' more bucks to buy ' + target + '.');
+			}
+		}
+				if (match === true) {
+			var re = new RegExp(line,"g");
+			fs.readFile('config/money.csv', 'utf8', function (err,data) {
+			if (err) {
+				return console.log(err);
+			}
+			var result = data.replace(re, user.userid+','+user.money);
+			fs.writeFile('config/money.csv', result, 'utf8', function (err) {
+				if (err) return console.log(err);
+			});
+			});
+		} else {
+					var log = fs.createWriteStream('config/money.csv', {'flags': 'a'});
+					log.write("\n"+user.userid+','+user.money);
+				}
+	},
 
 	customsymbol: function(target, room, user) {
 		if(!user.canCustomSymbol) return this.sendReply('You need to buy this item from the shop to use.');
