@@ -654,7 +654,7 @@ var commands = exports.commands = {
 	},
 	
 	buyweapon: function(target, room, user) {
-		if (!target) return this.parse('That isn\'t a weapon);
+		if (!target) return this.parse('That isn\'t a weapon');
 		if (!users.get('Siiilver')) return this.sendReply('Silver the blacksmith isn\'t online....');
 		var data = fs.readFileSync('config/money.csv','utf8')
 		var match = false;
