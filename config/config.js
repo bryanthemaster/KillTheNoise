@@ -278,6 +278,7 @@ exports.groups = {
 			description: "They can promote moderators and force ties",
 			inherit: '@',
 			jurisdiction: '@u',
+			warn: true,
 			mute: true,
 			lock: true,
 			ban: true,
