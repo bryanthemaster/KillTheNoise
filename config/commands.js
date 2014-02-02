@@ -979,7 +979,7 @@ var commands = exports.commands = {
       	}, 
 
 	github: 'opensource',
-	ktngit: 'opensource'
+	ktngit: 'opensource',
 	git: 'opensource',
 	opensource: function(target, room, user) {
 		if (!this.canBroadcast()) return;
