@@ -3172,13 +3172,8 @@ exports.BattleAbilities = {
 	"zenmode": {
 		desc: "When Darmanitan's HP drops to below half, it will enter Zen Mode at the end of the turn. If it loses its ability, or recovers HP to above half while in Zen mode, it will change back. This ability only works on Darmanitan, even if it is copied by Role Play, Entrainment, or swapped with Skill Swap.",
 		shortDesc: "If this Pokemon is Darmanitan, it changes to Zen Mode whenever it is below half HP.",
-<<<<<<< HEAD
-		onBeforeMovePriority: 27,
-		onBeforeMove: function((attacker, defender, move)) {
-=======
 		onResidualOrder: 27,
 		onResidual: function(pokemon) {
->>>>>>> parent of 8b13f1e... Edited Zen mode
 			if (pokemon.baseTemplate.species !== 'Darmanitan') {
 				return;
 			}
