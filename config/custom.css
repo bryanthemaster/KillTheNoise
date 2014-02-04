@@ -30,22 +30,22 @@ background: #a5ffa5;
 
 #header{background:url("http://slowbuddy.com/wp-content/gallery/plain-background/plasma_ab.jpg")}
 
-body{background-image:url("http://i.imgur.com/5re4XJc.jpg");background-repeat:no-repeat;background-position:center}
+body{background-image:url("http://s29.postimg.org/b4ej6oy9j/testt.jpg");background-repeat:no-repeat;background-position:center}
 
-.chat-log{font-size:10pt;background: url("http://i.imgur.com/lw1R8ZL.png") no-repeat scroll right bottom;background:#a5ffa5;color:#000;overflow:auto;}
+.chat-log{font-size:10pt;background: url("") no-repeat scroll right bottom;background:#fbab0e;color:#000;overflow:auto;}
 
 .menugroup .button{background:#008120}.menugroup 
 
 .menugroup {
-background:#a5ffa5);
+background:#fbab0e);
 text-align: center;
 }
 
-.button:hover{background:#4876FF}
+.button:hover{background:#fd0e0e}
 
 .userlist {
 border-left: 1px solid #D5DDE4;
-background: #a5ffa5;
+background: #fbab0e;
 }
 
 
