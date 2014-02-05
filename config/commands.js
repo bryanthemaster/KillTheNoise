@@ -265,7 +265,7 @@ var commands = exports.commands = {
 
 	tierpoll: 'tiervote',
 	tiervote: function(target, room, user) {
-		return this.parse('/poll Tournament Tier, randombattle,ou,formswitchingbeta,ubers,uubeta,lc,lcuu,xybattlespotsingles,customgame,smogondoubles,smogondoublesubers,smogondoublesuu,xybattlespotdoubles,vgc2014,doubleschallengecup,doublescustomgame,seasonalwinterswont,averagemons,cap,challengecup,challengecup1vs1,balancedhackmons,hackmons,skybattles,inversebattle,1v1,ce,oumonotype,stabmons,abilityexchange,gennextou,gen5glitchmons,gen5ou,gen5ubers,gen5uu,gen5ru,gen5nu,gen5lc,gen5gbusingles,gen5customgame,gen5smogondoubles,gen5gbudoubles,gen5doublescustomgame,gen4oubeta,gen4uubeta,gen4hackmons,gen4customgame,gen3hackmons,gen3customgame,gen2oubeta,gen2customgame,gen1oubeta,gen1customgame');
+		return this.parse('/poll Tournament Tier, randombattle,ou,ubers,uubeta,lc,lcuu,smogondoubles,seasonalwinterswont,averagemons,cap,cc,cc1v1,1v1,oumonotype,gen5ou,gen5ubers,gen5lc,gen5smogondoubles');
 	},
 
 	sass: 'gurl',
