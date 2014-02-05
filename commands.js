@@ -795,7 +795,6 @@ var commands = exports.commands = {
 		if (!target) {
 			return this.sendReply("No new name chosen.");
 		}
-		if (target.length > 20) return this.sendReply('Your chosen name is too long.');
 		user.forceRename(target)
 		user.canForceRename = false;
 		
