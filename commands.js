@@ -586,7 +586,7 @@ var commands = exports.commands = {
 			if (price <= user.money) {
 				user.money = user.money - price;
 				this.sendReply('You have purchased the ability to forcerename yourself to whatever you wish...');
-				this.sendReply('Do /frtme [new name] to frt yourself! Remember to not impersonate anyone.');
+				this.sendReply('Do /frtme [new name] to frt yourself! Remember to not impersonate anyone. Your new name will be removed after refreshing the page. You can only re-rename yourself once by asking an admin.');
 				user.canForceRename = true;
 				this.add(user.name + ' has purchased the ability to rename themself to anything they want to!');
 			} else {
@@ -790,11 +790,12 @@ var commands = exports.commands = {
 	},
 	
 	frtme: function(target, room, user) {
-		if (!user.canForceRename) return this.sendReply('You have to buy this from the shop');
+		if (!user.canForceRename) return this.sendReply('You have to buy this from the shop first!');
 		
 		if (!target) {
-			return this.sendReply("No new name was specified.");
+			return this.sendReply("No new name chosen.");
 		}
+		if (target.length > 20) return this.sendReply('Your chosen name is too long.');
 		user.forceRename(target)
 		user.canForceRename = false;
 		
