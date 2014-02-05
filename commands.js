@@ -581,11 +581,12 @@ var commands = exports.commands = {
 				return this.sendReply('You do not have enough bucks for this. You need ' + (price - user.money) + ' more bucks to buy ' + target + '.');
 			}
 		}
-		if (target === 'frt') {
+		if (target === 'forcerename') {
 			price = 10;
 			if (price <= user.money) {
 				user.money = user.money - price;
-				this.sendReply('You have purchased the ability to rename yourself to anything you want, rank symbol will remain (name should be appropriate)');
+				this.sendReply('You have purchased the ability to forcerename yourself to whatever you wish...');
+				this.sendReply('Do /frtme [new name] to frt yourself! Remember to not impersonate anyone.');
 				user.canForceRename = true;
 				this.add(user.name + ' has purchased the ability to rename themself to anything they want to!');
 			} else {
@@ -787,6 +788,18 @@ var commands = exports.commands = {
 		user.updateIdentity();
 		user.canCustomSymbol = false;
 	},
+	
+	frtme: function(target, room, user) {
+		if (!user.canForceRename) return this.sendReply('You have to buy this from the shop');
+		
+		if (!target) {
+			return this.sendReply("No new name was specified.");
+		}
+		user.forceRename(target)
+		user.canForceRename = false;
+		
+	},
+
 
 
 
@@ -801,7 +814,7 @@ var commands = exports.commands = {
 			'<tr><td>Trainer</td><td>Buys a trainer card which shows information through a command such as /blakjack (note: third image costs 10 bucks extra, ask for more details)</td><td>40</td></tr>' +
 			'<tr><td>Fix</td><td>Buys the ability to alter your current custom avatar or trainer card (don\'t buy if you have neither)!</td><td>10</td></tr>' +
 			'<tr><td>Declare</td><td>You get the ability to get two declares from an Admin in lobby. This can be used for league advertisement (not server)</td><td>25</td></tr>' +
-			'<tr><td>Force Rename</td><td>You get the ability to rename yourself to anything you want, rank symbol will remain (name should be appropriate)</td><td>10</td></tr>' +
+			'<tr><td>forcerename</td><td>You get the ability to rename yourself to anything you want, rank symbol will remain (name should be appropriate)</td><td>10</td></tr>' +
 			'</table><center><table border="1" cellspacing ="0" cellpadding="4"><tr><th>Command</th><th>change converter!</th><th>PAYOUT</th></tr>' +
 		        '<tr><td>coin</td><td>Turns <b>100 bucks</b> into <b>1 coin</b>!</td><td>1 coin</td></tr>' +
 		        '<tr><td>buck</td><td>Turns <b>1 coin</b> into <b>100 bucks</b>!</td><td>100 bucks</td></tr>' +
