@@ -1200,6 +1200,12 @@ var commands = exports.commands = {
 
 		return '/me ' + target;
 	},
+	
+	pmall: function(target, room, user, connection) {
+		if(user.can('hotpatch')) return false;
+		if (!target) return this.sendReply('You need to specify something to say.')
+this.parse('/a |pm| PM Bot|| '+target+'');
+	},
 
 	mee: function(target, room, user, connection) {
 		// By default, /mee allows a blank message
