@@ -482,6 +482,12 @@ mod: 'forms',
 		ruleset: ['OU', 'Same Type Clause']
 	},
 	{
+		name: "Colormons",
+		section: "Other Metagames",
+
+		ruleset: ['OU', 'Color Clause']
+	},
+	{
 		name: "STABmons",
 		section: "Other Metagames",
 
