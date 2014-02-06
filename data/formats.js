@@ -463,5 +463,23 @@ exports.BattleFormats = {
 			}
 			return ["Your team must share a type."];
 		}
+	},
+	colorclause: {
+		effectType: 'Rule',
+		onStart: function() {
+			this.add('rule', 'Same Color Clause: Pokemon in a team must share the same color.');
+		},
+		validateTeam: function(team, format) {
+			var colorTable = {};
+			for (var i=0; i<team.length; i++) {
+				
+			}
+			for (var color in colorTable) {
+				if (typeTable[color] >= team.length) {
+					return;
+				}
+			}
+			return ["Your team must share a type."];
+		}
 	}
 };
