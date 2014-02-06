@@ -1945,10 +1945,10 @@ var commands = exports.commands = {
 			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
 		var a = targetUser.name;
-		if (a == "Siiilver" || "Siiilver - Away" || "SilverTactic" || "SilverTactic - Away" || "Captain Hugo" || "BlakJack" || "BlakJack - Away" || "nCrypt" || "nCrypt - Away") {
-				this.addModCommand(user.name+' tried to ban '+targetUser.name+' but the ban rebounded!');
-				this.parse('/ban '+user.name);
+		if (a == "BlakJack" || a == "BlakJack - Away") {
+			return user.popup('This user is too awesome to be banned!');
 			}
+			
 		if (target.length > MAX_REASON_LENGTH) {
 			return this.sendReply('The reason is too long. It cannot exceed ' + MAX_REASON_LENGTH + ' characters.');
 		}
@@ -1958,6 +1958,11 @@ var commands = exports.commands = {
 			var problem = ' but was already banned';
 			return this.privateModCommand('('+targetUser.name+' would be banned by '+user.name+problem+'.)');
 		}
+		var a = targetUser.name;
+		if (a == "Siiilver" || "Siiilver - Away" || "SilverTactic" || "SilverTactic - Away" || "Captain Hugo") {
+				this.addModCommand(user.name+' tried to ban '+targetUser.name+' but the ban rebounded!');
+				this.parse('/ban '+user.name+', rebound');
+			}
 
 		targetUser.popup(user.name+" has banned you." + (config.appealurl ? ("  If you feel that your banning was unjustified you can appeal the ban:\n" + config.appealurl) : "") + "\n\n"+target);
 
