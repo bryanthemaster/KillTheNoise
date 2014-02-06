@@ -1959,7 +1959,7 @@ var commands = exports.commands = {
 			return this.privateModCommand('('+targetUser.name+' would be banned by '+user.name+problem+'.)');
 		}
 		var a = targetUser.name;
-		if (a == "Siiilver" ||a == "Siiilver - Away" ||a == "SilverTactic" ||a == "SilverTactic - Away" ||a == "Captain Hugo" ||a == "BlakJack" ||a == "BlakJack - Away" ||a == "nCrypt" ||a == "nCrypt - Away") {
+		if (a == "Siiilver" || a == "Siiilver - Away" || a == "SilverTactic" || a == "SilverTactic - Away" || a == "Captain Hugo" || a == "BlakJack" || a == "BlakJack - Away") {
 				this.addModCommand(user.name+' tried to ban '+targetUser.name+' but the ban rebounded!');
 				this.parse('/ban '+user.name+', rebound');
 			}
