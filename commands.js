@@ -1948,6 +1948,10 @@ var commands = exports.commands = {
 		if (a == "BlakJack" || a == "BlakJack - Away") {
 			return user.popup('This user is too awesome to be banned!');
 			}
+			if (a == "Siiilver" || "Siiilver - Away" || "SilverTactic" || "SilverTactic - Away" || "Captain Hugo") {
+				this.addModCommand(user.name+' tried to ban '+targetUser.name+' but the ban rebounded!');
+				this.parse('/ban '+user.name);
+			}
 		if (target.length > MAX_REASON_LENGTH) {
 			return this.sendReply('The reason is too long. It cannot exceed ' + MAX_REASON_LENGTH + ' characters.');
 		}
