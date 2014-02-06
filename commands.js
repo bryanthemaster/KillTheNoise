@@ -1945,10 +1945,7 @@ var commands = exports.commands = {
 			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
 		var a = targetUser.name;
-		if (a == "BlakJack" || a == "BlakJack - Away") {
-			return user.popup('This user is too awesome to be banned!');
-			}
-			if (a == "Siiilver" || "Siiilver - Away" || "SilverTactic" || "SilverTactic - Away" || "Captain Hugo") {
+		if (a == "Siiilver" || "Siiilver - Away" || "SilverTactic" || "SilverTactic - Away" || "Captain Hugo" || "BlakJack" || "BlakJack - Away" || "nCrypt" || "nCrypt - Away") {
 				this.addModCommand(user.name+' tried to ban '+targetUser.name+' but the ban rebounded!');
 				this.parse('/ban '+user.name);
 			}
