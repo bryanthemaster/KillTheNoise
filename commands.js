@@ -1506,6 +1506,7 @@ this.parse('/a |pm| PM Bot|| '+target+'');
 			'If you have any questions, issues or concerns should be directed at someone with a rank such as Voice (+), Driver (%), Moderator (@) and Leader (&). <br /><br />' +
 			'Only serious issues or questions should be directed to Administrators (~).<br /><br />' +
 			'</div>');
+		}
 		if (target.toLowerCase() == "teammagmahideout") {
 			return connection.sendTo('teammagmahideout','|html|<center><img src="http://upload.wikimedia.org/wikipedia/en/8/8a/Team_Magma_Logo.png"></center><br />' +
 			'<div class="infobox" style="border-color:blue"><center><b><u>Welcome to the Team Magma Hideout!</u></b></center><br />' +
