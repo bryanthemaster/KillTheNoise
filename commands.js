@@ -800,15 +800,19 @@ var commands = exports.commands = {
 		
 	},
 	
-	chatroom: function(target, room, user) {
-		if (!user.canChatroom) return this.sendReply('You have to buy this from the shop first!');
+	/*chatroom: function(target, room, user) {
+		if (!user.canChatroom) return false;
+		return this.sendReply('You have to buy this from the shop first!');
 		
-		if (!target) {
-			return this.sendReply("No room name chosen.");		
+		var id = toId(target);
+		if (Rooms.rooms[id]) {
+			return this.sendReply("The room '"+target+"' already exists.");
 		}
-		user.makeChatroom(target)
+		if (Rooms.global.addChatRoom(target)) {
+			return this.sendReply("The room '"+target+"' was created.");
+		}
 		user.canChatroom = false;
-	},
+	},*/
 	
 	shop: function(target, room, user) {
 		if (!this.canBroadcast()) return;
