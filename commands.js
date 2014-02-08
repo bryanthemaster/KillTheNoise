@@ -1514,6 +1514,7 @@ this.parse('/a |pm| PM Bot|| '+target+'');
 			'<center>HOWEVER, WE CONSTANTLY FIND OURSELVES IN FIGHTS WITH TEAM AQUA AND WE NEED YOUR HELP!</center><br /><br />' +
 			'<center>CONTACT AN ADMIN (%), OPERATOR (@), OR COMMANDER (#) TO JOIN. WHEN RECRUITED, YOU WILL START AS A GRUNT (+)!</center><br /><br />' +
 			'</div>');
+		}
 	},
 
 	rb: 'roomban',
