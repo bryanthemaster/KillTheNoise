@@ -1506,6 +1506,13 @@ this.parse('/a |pm| PM Bot|| '+target+'');
 			'If you have any questions, issues or concerns should be directed at someone with a rank such as Voice (+), Driver (%), Moderator (@) and Leader (&). <br /><br />' +
 			'Only serious issues or questions should be directed to Administrators (~).<br /><br />' +
 			'</div>');
+		if (target.toLowerCase() == "teammagmahideout") {
+			return connection.sendTo('teammagmahideout','|html|<center><img src="http://upload.wikimedia.org/wikipedia/en/8/8a/Team_Magma_Logo.png"></center><br />' +
+			                         '<div class="infobox" style="border-color:blue"><center><b><u>Welcome to the Team Magma Hideout!</u></b></center><br />' +
+			                         '<center>WELCOME TO TEAM MAGMA! WE ARE A GANG OF MERCILESS VISIONARIES WORKING TO CONTROL GROUDON!</center><br /><br />' +
+			                         '<center>HOWEVER, WE CONSTANTLY FIND OURSELVES IN FIGHTS WITH TEAM AQUA AND WE NEED YOUR HELP!</center><br /><br />' +
+			                         '<center>CONTACT AN ADMIN (%), OPERATOR (@), OR COMMANDER (#) TO JOIN. WHEN RECRUITED, YOU WILL START AS A GRUNT (+)!</center><br /><br />' +
+			                         '</div>');
 		}
 	},
 
