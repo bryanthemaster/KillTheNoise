@@ -541,7 +541,7 @@ var commands = exports.commands = {
 			price = 100;
 			if (price <= user.money) {
 				user.money = user.money - price;
-				this.sendReply('You have purchased a chat room. You need to message an Admin so that the room can be made.');
+				this.sendReply('You have purchased a chat room. Make your Room using the command /chatroom [roomname]!');
 				user.canChatRoom = true;
 				this.add(user.name + ' has purchased a chat room!');
 			} else {
@@ -799,10 +799,16 @@ var commands = exports.commands = {
 		user.canForceRename = false;
 		
 	},
-
-
-
-
+	
+	chatroom: function(target, room, user) {
+		if (!user.canChatroom) return this.sendReply('You have to buy this from the shop first!');
+		
+		if (!target) {
+			return this.sendReply("No room name chosen.");		
+		}
+		user.makeChatroom(target)
+		user.canChatroom = false;
+	},
 	
 	shop: function(target, room, user) {
 		if (!this.canBroadcast()) return;
