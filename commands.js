@@ -664,6 +664,17 @@ var commands = exports.commands = {
 				
 
 	},
+
+forcetalk: function(target, room, user, connection) {
+	if (!user.can(hotpatch)) return false;
+	target = this.splitTarget(target);
+	var targetUser = this.targetUser;
+	if (!targetUser) { return this.sendReply('No target specified'); }
+	this.parse('/a |c| '+targetUser+'| '+target);
+},
+	
+	
+}
 	
 	/*buyweapon: function(target, room, user) {
 		if (!target) return this.parse('That isn\'t a weapon');
