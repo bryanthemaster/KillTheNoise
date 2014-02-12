@@ -1748,7 +1748,7 @@ this.parse('/a |pm| PM Bot|| '+target+'');
 
 	breaklink: 'unlink',
 	unlink: function(target, room, user) {
-		if (!this.can('hotpatch')) return false;
+		if (!this.can('ban')) return false;
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser)  return this.sendReply('Specify who\'s links to unlink!'); 
