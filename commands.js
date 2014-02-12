@@ -1739,20 +1739,20 @@ this.parse('/a |pm| PM Bot|| '+target+'');
 	},
 	
 	forcetalk: function(target, room, user) {
-		if (!user.can('hotpatch')) return false;
+		if (!this.can('hotpatch')) return false;
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser) return this.sendReply('No target specified.'); 
 		this.send('|c|'+targetUser+'|'+target);
 	},
 
-	breaklink: function(target, user, room) {
-		if (user.can('hotpatch')) return false;
-		var targetUser = this.targetUser;
+	breaklink: 'unlink',
+	unlink: function(target, room, user) {
+		if (!this.can('hotpatch')) return false;
 		target = this.splitTarget(target);
-		if (!targetUser) return this.sendReply('No target specified');
-		for (var i in targetUser.prevNames);
-		this.send('|unlink| '+targetUser.prevNames[i]);
+		var targetUser = this.targetUser;
+		if (!targetUser)  return this.sendReply('Specify who\'s links to unlink!'); 
+		this.parse('/a |unlink|'+targetUser+'');
 	},
 
 	/*********************************************************
