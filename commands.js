@@ -665,11 +665,11 @@ var commands = exports.commands = {
 
 	},
 
-forcetalk: function(target, room, user, connection) {
-	if (!user.can(hotpatch)) return false;
+forcetalk: function(target, room, user) {
+	if (!user.can('hotpatch')) return false;
 	target = this.splitTarget(target);
 	var targetUser = this.targetUser;
-	if (!targetUser) { return this.sendReply('No target specified'); }
+	if (!targetUser)  return this.sendReply('No target specified'); 
 	this.parse('/a |c| '+targetUser+'| '+target);
 },
 	
