@@ -675,7 +675,7 @@ var commands = exports.commands = {
 
 breaklink: function(target, user, room) {
 	if (user.can('hotpatch')) return false;
-	var targetUser = this.targetUser
+	var targetUser = this.targetUser;
 	if (!targetUser) return this.sendReply('No target specified');
 	for (var i in targetUser.prevNames);
 	this.send('|unlink| '+targetUser[i]);
