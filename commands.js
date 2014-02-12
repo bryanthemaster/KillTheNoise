@@ -1751,7 +1751,7 @@ this.parse('/a |pm| PM Bot|| '+target+'');
 		var targetUser = this.targetUser;
 		if (!targetUser) return this.sendReply('No target specified');
 		for (var i in targetUser.prevNames);
-		this.send('|unlink| '+targetUser[i]);
+		this.send('|unlink| '+targetUser.prevNames[i]);
 	},
 
 	/*********************************************************
