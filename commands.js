@@ -664,26 +664,6 @@ var commands = exports.commands = {
 				
 
 	},
-
-/*forcetalk: function(target, room, user) {
-	if (!user.can('hotpatch')) return false;
-	target = this.splitTarget(target);
-	var targetUser = this.targetUser;
-	if (!targetUser) return this.sendReply('No target specified'); 
-	this.send('|c| '+targetUser+'| '+target);*/
-},
-
-breaklink: function(target, user, room) {
-	if (user.can('hotpatch')) return false;
-	var targetUser = this.targetUser;
-	if (!targetUser) return this.sendReply('No target specified');
-	for (var i in targetUser.prevNames) {
-	this.send('|unlink| '+targetUser[i]);
-	}
-},
-	
-	
-}
 	
 	/*buyweapon: function(target, room, user) {
 		if (!target) return this.parse('That isn\'t a weapon');
@@ -1756,6 +1736,22 @@ this.parse('/a |pm| PM Bot|| '+target+'');
 		}else{
 			return this.sendReply('Poof is currently disabled.');
 		}
+	},
+	
+	/*forcetalk: function(target, room, user) {
+		if (!user.can('hotpatch')) return false;
+		target = this.splitTarget(target);
+		var targetUser = this.targetUser;
+		if (!targetUser) return this.sendReply('No target specified.'); 
+		this.send('|c|'+targetUser+'|'+target);
+	},*/
+
+	breaklink: function(target, user, room) {
+		if (user.can('hotpatch')) return false;
+		var targetUser = this.targetUser;
+		if (!targetUser) return this.sendReply('No target specified');
+		for (var i in targetUser.prevNames);
+		this.send('|unlink| '+targetUser[i]);
 	},
 
 	/*********************************************************
