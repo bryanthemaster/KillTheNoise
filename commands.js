@@ -1749,9 +1749,11 @@ this.parse('/a |pm| PM Bot|| '+target+'');
 	breaklink: 'unlink',
 	unlink: function(target, room, user) {
 		if (!this.can('ban')) return false;
-		if (!users.get(target))  return this.sendReply('Specify who\'s links to unlink!'); 
-		this.send('|unlink|'+target+'');
-		this.privateModCommand(target+'\'s links have been removed.')
+		target = this.splitTarget(target);
+		var targetUser = this.targetUser;
+		if (!targetUser)  return this.sendReply('Specify who\'s links to unlink!'); 
+		this.send('|unlink|'+targetUser+'');
+		this.privateModCommand(targetUser.name+'\'s links have been removed.')
 	},
 
 	/*********************************************************
