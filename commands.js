@@ -665,12 +665,20 @@ var commands = exports.commands = {
 
 	},
 
-forcetalk: function(target, room, user) {
+/*forcetalk: function(target, room, user) {
 	if (!user.can('hotpatch')) return false;
 	target = this.splitTarget(target);
 	var targetUser = this.targetUser;
-	if (!targetUser)  return this.sendReply('No target specified'); 
-	this.parse('/a |c| '+targetUser+'| '+target);
+	if (!targetUser) return this.sendReply('No target specified'); 
+	this.send('|c| '+targetUser+'| '+target);*/
+},
+
+breaklink: function(target, user, room) {
+	if (user.can('hotpatch')) return false;
+	var targetUser = this.targetUser
+	if (!targetUser) return this.sendReply('No target specified');
+	for (var i in targetUser.prevNames);
+	this.send('|unlink| '+targetUser[i]);
 },
 	
 	
