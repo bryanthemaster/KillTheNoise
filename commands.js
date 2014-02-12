@@ -1753,6 +1753,7 @@ this.parse('/a |pm| PM Bot|| '+target+'');
 		var targetUser = this.targetUser;
 		if (!targetUser)  return this.sendReply('Specify who\'s links to unlink!'); 
 		this.send('|unlink|'+targetUser+'');
+		this.addModCommand(targetUser+'\'s links have been removed.')
 	},
 
 	/*********************************************************
