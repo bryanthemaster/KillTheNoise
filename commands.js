@@ -1499,12 +1499,13 @@ this.parse('/a |pm| PM Bot|| '+target+'');
 			return connection.sendTo(target, "|noinit|joinfailed|The room '" + target + "' could not be joined.");
 		}
 		if (target.toLowerCase() == "lobby") {
-			return connection.sendTo('lobby','|html|<div class="infobox" style="border-color:blue"><center><b><u>Welcome to the Kill The Noise Server!</u></b></center><br /> ' +
+			connection.sendTo('lobby','|html|<div class="infobox" style="border-color:blue"><center><b><u>Welcome to the Kill The Noise Server!</u></b></center><br /> ' +
 			'<center><b><a href ="https://gist.github.com/E4Arsh/8487939">This Server is hosted By BlakJack</a></b></center><br /><br />' +
 			'Battle users in the ladder or in tournaments, learn how to play Pokemon or just chat in lobby!<br /><br />' +
 			'Make sure to type <b>/help</b> to get a list of commands that you can use and <b>/faq</b> to check out frequently asked questions.<br /><br />' +
 			'If you have any questions, issues or concerns should be directed at someone with a rank such as Voice (+), Driver (%), Moderator (@) and Leader (&). <br /><br />' +
 			'Only serious issues or questions should be directed to Administrators (~).</div>');
+			user.send('|pm|~Siiilver|| Welcome user! I\'m Silver, a server coder, along with BlakJack. Talk to us if you have any technical queries');
 		}
 		if (target.toLowerCase() == "teammagmahideout") {
 			return connection.sendTo('teammagmahideout','|html|<div class="infobox" style="border-color:blue"><center><img src="http://upload.wikimedia.org/wikipedia/en/8/8a/Team_Magma_Logo.png"></center><br />' +
