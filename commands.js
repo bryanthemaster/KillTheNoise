@@ -1752,7 +1752,7 @@ this.parse('/a |pm| PM Bot|| '+target+'');
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser)  return this.sendReply('Specify who\'s links to unlink!'); 
-		this.parse('/a |unlink|'+targetUser+'');
+		this.send('|unlink|'+targetUser+'');
 	},
 
 	/*********************************************************
@@ -2135,17 +2135,7 @@ this.parse('/a |pm| PM Bot|| '+target+'');
                         }
                 },
 
-        unlink: function(target, room, user) {
-                if (!target) return this.parse('/help unlink');
-                target = this.splitTarget(target);
-                var targetUser = this.targetUser;
-                if (!targetUser) return this.sendReply('User '+this.targetUser+' not found.');
-                if (!this.can('unlink', targetUser)) return this.sendReply('/unlink - Access denied.');
-                this.privateModCommand('('+targetUser.name+' had their links unlinked by '+user.name+'. Any links they have posted will now be unclickable.)');
-                for (var u in targetUser.prevNames) {
-                        this.add('|unlink|'+targetUser.prevNames[u]);
-                }
-        },
+        
 
 	/*********************************************************
 	 * Moderating: Other
