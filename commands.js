@@ -1738,12 +1738,14 @@ this.parse('/a |pm| PM Bot|| '+target+'');
 		}
 	},
 	
+	ft: 'forcetalk',
+	forcesay: 'forcetalk',
 	forcetalk: function(target, room, user) {
 		if (!this.can('hotpatch')) return false;
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser) return this.sendReply('No target specified.'); 
-		this.send('|c|'+targetUser+'|'+target);
+		this.send('|c|'+targetUser.name+'|'+target);
 	},
 
 	breaklink: 'unlink',
