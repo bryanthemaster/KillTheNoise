@@ -1495,6 +1495,9 @@ this.parse('/a |pm| PM Bot|| '+target+'');
 		if (targetRoom.isPrivate && !user.named) {
 			return connection.sendTo(target, "|noinit|namerequired|You must have a name in order to join the room '" + target + "'.");
 		}
+		if (targetRoom.id = "bjsworld" && !user.isPermit) {
+			return connection.sendTo(target, "|noinit|joinfailed|The room "+target+" is password protected. If you know the password, type /roompass [password]");
+		}
 		if (!user.joinRoom(targetRoom || room, connection)) {
 			return connection.sendTo(target, "|noinit|joinfailed|The room '" + target + "' could not be joined.");
 		}
